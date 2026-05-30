@@ -1,0 +1,89 @@
+name: "Feature request"
+description: "Propose a new public surface, behavior, or capability."
+title: "[feat] <one-line summary>"
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for proposing a feature. Substantive proposals (new public exports, new event kinds, new backend interfaces, CLI flag additions) require maintainer discussion BEFORE implementation. Please file this issue first and wait for triage before opening a PR.
+
+        Read [SPEC.md](https://github.com/davccavalcante/keymesh/blob/main/SPEC.md) and [TASK.md](https://github.com/davccavalcante/keymesh/blob/main/TASK.md) before submitting. Many proposed features may already be on the roadmap or deliberately out of scope.
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: "Target surface"
+      description: "Which part of keymesh should the feature live in?"
+      options:
+        - "core / createKeymesh"
+        - "new adapter (Cohere, Mistral, Groq, DeepSeek, etc.)"
+        - "existing adapter (openai / anthropic / gemini / http)"
+        - "new state backend (Redis, SQLite, Postgres, etc.)"
+        - "new selector strategy (cost-aware, etc.)"
+        - "CLI (keymesh start / inspect / new subcommand)"
+        - "telemetry / new event kind"
+        - "types / public API"
+        - "docs / examples"
+        - "CI / tooling"
+        - "cross-cutting / new workspace"
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: "Motivation"
+      description: "What problem does this feature solve? Who has the problem (library user, CLI user, integrator, maintainer)? Why is the current surface insufficient?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "Proposed surface"
+      description: "What would the public API look like? Include type signatures, CLI flag names, config schema, file layouts - whatever is concrete enough to review."
+      render: typescript
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "Alternatives considered"
+      description: "Other shapes you considered and rejected (and why). 'I did not think of any' is not acceptable for non-trivial features."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: semver
+    attributes:
+      label: "SemVer impact"
+      description: "Per SPEC.md §5.2."
+      options:
+        - "Patch - bug fix or internal refactor"
+        - "Minor - new optional export, new optional field, new event kind"
+        - "Major - breaking change (rename, remove, signature change, schema change)"
+    validations:
+      required: true
+
+  - type: input
+    id: task_ref
+    attributes:
+      label: "TASK.md cross-reference"
+      description: "If this proposal advances or closes a TASK.md item, name the ID(s). Use 'N/A - new initiative' if novel."
+      placeholder: "F-1, X-3, etc."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission checklist"
+      options:
+        - label: "I read [SPEC.md](https://github.com/davccavalcante/keymesh/blob/main/SPEC.md) and [TASK.md](https://github.com/davccavalcante/keymesh/blob/main/TASK.md)."
+          required: true
+        - label: "I searched existing issues and PRs for duplicates and prior art."
+          required: true
+        - label: "I understand substantive features need maintainer discussion before a PR opens (per CONTRIBUTING §4.3)."
+          required: true

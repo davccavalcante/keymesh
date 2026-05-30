@@ -1,0 +1,9 @@
+allowBuilds:
+  '@biomejs/biome': true
+  '@google/genai': true
+  esbuild: true
+  protobufjs: true
+minimumReleaseAgeExclude:
+  - '@anthropic-ai/sdk@0.100.0'
+  - '@google/genai@2.7.0'
+  - openai@6.39.1

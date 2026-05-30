@@ -1,0 +1,159 @@
+{
+  "name": "@takk/keymesh",
+  "version": "1.0.0",
+  "description": "Universal, zero-runtime-dependency NPM library and CLI for intelligent API key rotation, failover, load balancing, circuit breaking, and rate-limit recovery. Drop-in adapters for OpenAI, Anthropic, Gemini, and any HTTP endpoint.",
+  "keywords": [
+    "api-keys",
+    "rate-limit",
+    "failover",
+    "load-balancing",
+    "circuit-breaker",
+    "retry",
+    "rotation",
+    "openai",
+    "anthropic",
+    "gemini",
+    "llm",
+    "resilience",
+    "proxy",
+    "key-rotation",
+    "ai-infrastructure"
+  ],
+  "homepage": "https://github.com/davccavalcante/keymesh",
+  "bugs": {
+    "url": "https://github.com/davccavalcante/keymesh/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davccavalcante/keymesh.git"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "David C Cavalcante",
+    "email": "davccavalcante@proton.me",
+    "url": "https://takk.ag"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./openai": {
+      "import": {
+        "types": "./dist/adapters/openai.d.ts",
+        "default": "./dist/adapters/openai.js"
+      },
+      "require": {
+        "types": "./dist/adapters/openai.d.cts",
+        "default": "./dist/adapters/openai.cjs"
+      }
+    },
+    "./anthropic": {
+      "import": {
+        "types": "./dist/adapters/anthropic.d.ts",
+        "default": "./dist/adapters/anthropic.js"
+      },
+      "require": {
+        "types": "./dist/adapters/anthropic.d.cts",
+        "default": "./dist/adapters/anthropic.cjs"
+      }
+    },
+    "./gemini": {
+      "import": {
+        "types": "./dist/adapters/gemini.d.ts",
+        "default": "./dist/adapters/gemini.js"
+      },
+      "require": {
+        "types": "./dist/adapters/gemini.d.cts",
+        "default": "./dist/adapters/gemini.cjs"
+      }
+    },
+    "./http": {
+      "import": {
+        "types": "./dist/adapters/http.d.ts",
+        "default": "./dist/adapters/http.js"
+      },
+      "require": {
+        "types": "./dist/adapters/http.d.cts",
+        "default": "./dist/adapters/http.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "keymesh": "./dist/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "CHANGELOG.md",
+    "SECURITY.md"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist coverage .tsbuildinfo",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check src tests examples",
+    "lint:fix": "biome check --write src tests examples",
+    "format": "biome format --write src tests examples",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "publint": "publint",
+    "attw": "attw --pack",
+    "prepack": "pnpm run build",
+    "verify": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build && pnpm run publint"
+  },
+  "peerDependencies": {
+    "@anthropic-ai/sdk": ">=0.30.0",
+    "@google/genai": ">=0.7.0",
+    "openai": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "openai": {
+      "optional": true
+    },
+    "@anthropic-ai/sdk": {
+      "optional": true
+    },
+    "@google/genai": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.100.0",
+    "@arethetypeswrong/cli": "^0.18.2",
+    "@biomejs/biome": "^2.4.16",
+    "@google/genai": "^2.7.0",
+    "@types/node": "^25.9.1",
+    "@vitest/coverage-v8": "^4.1.7",
+    "openai": "^6.39.1",
+    "publint": "^0.3.21",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.14",
+    "vitest": "^4.1.7"
+  },
+  "packageManager": "pnpm@10.34.1",
+  "sideEffects": false
+}

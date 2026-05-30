@@ -1,0 +1,122 @@
+name: "Bug report"
+description: "Report a defect in @takk/keymesh."
+title: "[bug] <one-line summary>"
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug. Please fill every section honestly - the maintainer reads every issue personally and complete context speeds up triage.
+
+        **Security vulnerabilities are NOT bugs filed here.** Email <davccavalcante@proton.me> with prefix `[SECURITY]`.
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: "Affected surface"
+      description: "Which part of keymesh does the bug occur in?"
+      options:
+        - "core / createKeymesh"
+        - "openai adapter (@takk/keymesh/openai)"
+        - "anthropic adapter (@takk/keymesh/anthropic)"
+        - "gemini adapter (@takk/keymesh/gemini)"
+        - "http adapter (@takk/keymesh/http)"
+        - "CLI (keymesh start / inspect)"
+        - "selector strategies"
+        - "state backends (memory / file)"
+        - "telemetry / events"
+        - "types / .d.ts"
+        - "docs / README / SPEC"
+        - "CI / workflows"
+        - "not sure"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: "Package version"
+      description: "Output of `npm view @takk/keymesh version`, or the git SHA if testing local source."
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: "Reproduction steps"
+      description: "Minimal, deterministic steps. Include shell commands, code snippets, env variables. Recreate the bug from a clean clone."
+      placeholder: |
+        1. `pnpm add @takk/keymesh`
+        2. Code snippet:
+           ```ts
+           import { createKeymesh } from '@takk/keymesh';
+           // ...
+           ```
+        3. Observe...
+      render: bash
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Expected behavior"
+      description: "What did you expect to happen? Cite SPEC.md or README if relevant."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: "Actual behavior"
+      description: "What happened instead? Paste full stack traces, error messages, telemetry events if relevant."
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: "Terminal output"
+      description: "Paste relevant stderr/stdout here (it will be rendered as a code block)."
+      render: console
+    validations:
+      required: false
+
+  - type: input
+    id: node
+    attributes:
+      label: "Node version"
+      description: "Output of `node -v`. keymesh requires Node >= 20.0.0; CI runs 20 and 22."
+      placeholder: "v22.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: "Operating system"
+      description: "e.g. macOS 26 (Apple Silicon), Ubuntu 24.04, Debian 12, Windows 11. Some bugs are platform-specific."
+      placeholder: "macOS 26 (Apple Silicon)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: "Additional context"
+      description: "Anything else the maintainer should know - related issues, conjectured root cause, links to upstream issues, etc."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission checklist"
+      options:
+        - label: "I read [SPEC.md](https://github.com/davccavalcante/keymesh/blob/main/SPEC.md) and confirmed this is not documented behavior."
+          required: true
+        - label: "I searched existing issues and PRs for duplicates."
+          required: true
+        - label: "This is NOT a security vulnerability (those go to email per CONTRIBUTING §7)."
+          required: true

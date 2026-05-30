@@ -1,0 +1,39 @@
+@takk/keymesh
+Copyright 2026 David C Cavalcante
+
+This product includes software developed by David C Cavalcante
+(https://takk.ag - davccavalcante@proton.me / say@takk.ag).
+
+keymesh is a universal, zero-runtime-dependency library and CLI for
+intelligent API key rotation, failover, load balancing, circuit breaking,
+and rate-limit recovery.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not
+use the software in this repository except in compliance with the License.
+A copy of the License is in the LICENSE file at the root of this repository,
+and is also available at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+────────────────────────────────────────────────────────────────────────────
+THIRD-PARTY COMPONENTS
+────────────────────────────────────────────────────────────────────────────
+
+keymesh has ZERO required runtime dependencies. The provider adapters use
+OPTIONAL peer dependencies, resolved only when the matching adapter is
+imported. Each is distributed under its own license:
+
+  - openai (OpenAI)            — Apache-2.0
+  - @anthropic-ai/sdk (Anthropic) — MIT
+  - @google/genai (Google)     — Apache-2.0
+
+The core package and the generic HTTP adapter use only the runtime's built-in
+fetch and Node standard library; they pull in none of the above.
+
+Development-only tooling (NOT shipped in the published package):
+
+  - tsup            — MIT
+  - vitest          — MIT
+  - typescript      — Apache-2.0
+  - @biomejs/biome  — MIT OR Apache-2.0
+  - publint         — MIT

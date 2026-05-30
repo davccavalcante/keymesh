@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://keymesh.takk.ag/sitemap.xml

@@ -146,7 +146,7 @@
     "@biomejs/biome": "^2.4.16",
     "@google/genai": "^2.7.0",
     "@types/node": "^25.9.1",
-    "@vitest/coverage-v8": "^4.1.7",
+    "@vitest/coverage-v8": "^4.1.8",
     "openai": "^6.39.1",
     "publint": "^0.3.21",
     "tsup": "^8.5.1",
